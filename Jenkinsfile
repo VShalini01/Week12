@@ -30,16 +30,15 @@ pipeline {
         }
         stage('Docker Login') {
             steps {
-                  bat 'docker login -u bhavani765 -p bhanu@123'
+                  bat 'docker login -u vshalini01 -p Shalinfo@102'
                 }
             }
-        stage('push Docker Image to Docker Hub') {
-            steps {
-                echo "push Docker Image to Docker Hub"
-                bat "docker tag seleniumdemoapp:v1 bhavani765/sample:seleniumtestimage"               
-                    
-                bat "docker push bhavani765/sample:seleniumtestimage"
-                
+        stage('push Docker image to docker hub'){
+            steps{
+                echo "push Docker image to docker hub"
+                bat "docker tag kubedemoapp:v1 vshalini01/sample:kubeimage1"
+
+                bat "docker push vshalini01/sample:kubeimage1"
             }
         }
         stage('Deploy to Kubernetes') { 
@@ -58,4 +57,5 @@ pipeline {
             echo 'Pipeline failed. Please check the logs.'
         }
     }
+
 }
